@@ -13,3 +13,14 @@
        rgba(248, 204, 9, 0.982) 82%
      );
 }
+
+.custom-btn {
+    @apply py-4 px-7 border transition-all duration-200 hover:opacity-80 rounded-lg text-lg font-normal
+}
+
+.dark .background {
+    background-image: url('/yonko.png'); /* Path relative to the public directory */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
