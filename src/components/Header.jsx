@@ -21,7 +21,7 @@ export default function Header() {
       <div className='ml-2 flex items-center gap-4'>
         <DarkModeSwitch/>
         <Link href='/'>
-            <span className='text-lh font-medium transition-all duration-200 bg-amber-600  p-2 rounded-md tracking-widest flex gap-2 items-center'>Hamstar
+            <span className='text-lg font-medium transition-all duration-200 bg-amber-600  p-2 rounded-md tracking-widest flex gap-2 items-center'>Hamstar
             <FaPaw/>
             </span>
         </Link>
