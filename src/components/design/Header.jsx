@@ -1,10 +1,10 @@
 import React from 'react'
-import MenuItem from './MenuItem'
+import MenuItem from '../MenuItem'
 import Link from 'next/link'
 import {AiFillHome, AiOutlineSearch} from 'react-icons/ai'
 import {FaPaw} from 'react-icons/fa'
 import {BsFillInfoCircleFill} from 'react-icons/bs'
-import DarkModeSwitch from './DarkModeSwitch'
+import DarkModeSwitch from '../DarkModeSwitch'
 
 export default function Header() {
   return (
