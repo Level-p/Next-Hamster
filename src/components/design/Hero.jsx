@@ -3,7 +3,7 @@
 export default function Hero() {
   return (
     <div 
-    className='min-h-screen relative z-10 bg-none background roboto'
+    className='min-h-screen relative z-10 bg-none background roboto border-b dark:border-none'
     >
         <div className="hidden dark:block absolute  inset-0 bg-[rgba(0,0,0,0.5)] h-full z-10"></div>
         <div className="mx-auto max-w-2xl py-32 md:py-20 text-center space-y-12 md:space-y-10 z-20 absolute inset-0">

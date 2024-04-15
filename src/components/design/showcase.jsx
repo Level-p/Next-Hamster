@@ -12,7 +12,6 @@ export default function showcase() {
                     width={350}
                     alt="null"
                     className="rounded-xl h-full mx-auto"
-                    objectFit="contain"
                     src='/disney.webp'/>
                   </div>
                 </div>           
