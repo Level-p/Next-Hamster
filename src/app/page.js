@@ -5,26 +5,6 @@ import Section from "@/components/design/showcase";
 
 const API_KEY = process.env.MOVIE_API_KEY
 
-const news = {
-  method: 'GET',
-  url: 'https://transfermarket.p.rapidapi.com/news/list-latest',
-  params: {domain: 'com'},
-  headers: {
-    'X-RapidAPI-Key': process.env.AS_API_KEY,
-    'X-RapidAPI-Host': 'transfermarket.p.rapidapi.com'
-  }
-};
-
-const anime = {
-  method: 'GET',
-  url: 'https://myanimelist.p.rapidapi.com/anime/top/upcoming',
-  headers: {
-    'X-RapidAPI-Key': process.env.AS_API_KEY,
-    'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
-  }
-};
-
-
 export default async function page({ searchParams }) {
   const genre = searchParams.genre || 'fetchTrending'
   const res = await fetch(
@@ -38,7 +18,6 @@ export default async function page({ searchParams }) {
   }
 
   const results = data.results
-  // console.log(results);
   return (
     <div>
       <Hero/>

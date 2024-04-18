@@ -1,14 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['image.tmdb.org'],
-        // remotePatterns: [
-        //     {
-        //         protocol: 'https',
-        //         hostname: 'image.tmbd.org',
-        //         pathname: '**'
-        //     }
-        // ]
+        domains: ['image.tmdb.org', 'tmssl.akamaized.net', 'cdn.myanimelist.net'],
     }
     
 };
