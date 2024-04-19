@@ -1,11 +1,10 @@
-import pic from "../../../public/img.webp"
 import Image from 'next/image'
 
 export default function About() {
   return (
     <div className='max-w-6xl mx-auto p-5 flex flex-col md:flex-row items-center justify-between gap-4'>
         <div className="hidden lg:block w-3/4 h-3/4 overflow-hidden rounded-2xl">
-        <Image src ={pic} 
+        <Image src ='/img.webp'
         alt="About" 
         className="transition-transform duration-500 ease-in hover:scale-125 h-1/2" 
         layout="responsive" 
