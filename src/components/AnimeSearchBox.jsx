@@ -12,7 +12,7 @@ export default function AnimeSearchBox() {
   }
 
   return (
-    <form id='form' className='flex justify-between px-5 max-w-6xl mx-auto border dark:border-none rounded mt-5' onSubmit={handleSubmit}>
+    <form id='form' className='flex justify-between px-5 max-w-6xl mx-auto border dark:border-none rounded-md mt-5' onSubmit={handleSubmit}>
       <input id='search'
       type="text" 
       placeholder="Search anime..." 

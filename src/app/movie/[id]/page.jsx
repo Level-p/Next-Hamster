@@ -10,7 +10,6 @@ export default async function Moviepage({params}) {
       throw new Error(`HTTP error! status: ${res.status}`);
     }
     const movie = await res.json();
-    console.log(movie);
   return (
     <div className='w-full p-8 flex flex-col md:flex-row content-center max-w-6xl mx-auto md:space-x-6 items-center'>
       <Image 

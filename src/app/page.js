@@ -1,4 +1,5 @@
 import Results from "@/components/Results"
+import Footer from "@/components/design/Footer";
 import Hero from "@/components/design/Hero";
 import Intro from "@/components/design/Intro";
 import Section from "@/components/design/showcase";

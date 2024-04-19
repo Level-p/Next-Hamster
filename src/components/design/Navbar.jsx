@@ -7,7 +7,6 @@ export default function Navbar() {
         <NavbarItem title="Trending" param="fetchTrending"/> 
         <NavbarItem title="Top Rated" param="fetchTopRated"/> 
         <Pages title="Anime" param="anime"/> 
-        <Pages title="Sports" param="sports"/> 
     </div>
   )
 }
