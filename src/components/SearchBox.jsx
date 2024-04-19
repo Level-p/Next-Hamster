@@ -1,5 +1,5 @@
 "use client"
-import { useState, Suspense } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { FaSearch } from 'react-icons/fa'
 
@@ -13,7 +13,6 @@ export default function SearchBox() {
   }
 
   return (
-    <Suspense>
     <form id='form' className='flex justify-between p-2 max-w-6xl border dark:border-none rounded' onSubmit={handleSubmit}>
       <input id='search'
       type="text" 
@@ -26,6 +25,5 @@ export default function SearchBox() {
         <FaSearch className='text-2xl'/>
       </button>
     </form>
-    </Suspense>
   )
 }
