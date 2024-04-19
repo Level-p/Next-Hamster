@@ -1,35 +1,9 @@
 import { BsFacebook, BsGooglePlay, BsInstagram, BsYoutube } from "react-icons/bs";
-import { GiAirplaneDeparture } from "react-icons/gi";
-import { MdFacebook } from "react-icons/md";
 
 
 export default function Footer() {
   return (
     <div className="roboto mt-16">
-        <div className="bg-gray-200 dark:bg-slate-950 py-20">
-            <div className="max-w-6xl mx-auto px-10">
-                    <h1 className="text-3xl md:text-5xl tracking-wider text-center font-bold pb-20">Proud Partners with</h1>
-
-                    <div className="flex flex-col md:flex-row justify-center gap-4">
-                        <div className="py-5 rounded-md uppercase dark:border-b bg-white w-full hover:border-slate-600 transition-all duration-300 cursor-pointer text-center dark:bg-transparent font-semibold">
-                            Crackle
-                        </div>
-                        <div className="py-5 rounded-md uppercase dark:border-b bg-white w-full hover:border-slate-600 transition-all duration-300 cursor-pointer text-center dark:bg-transparent font-medium">
-                            lionsgate
-                        </div>
-                        <div className="py-5 rounded-md uppercase dark:border-b bg-white w-full hover:border-slate-600 transition-all duration-300 cursor-pointer flex  justify-center items-center dark:bg-transparent font-medium text-3xl">
-                            <MdFacebook/>
-                        </div>
-                        <div className="py-5 rounded-md uppercase dark:border-b bg-white w-full hover:border-slate-600 transition-all duration-300 cursor-pointer dark:bg-transparent font-bold flex  justify-center items-center gap-2">
-                            <GiAirplaneDeparture className="text-2xl"/> Emirates
-                        </div>
-                        <div className="py-5 rounded-md uppercase dark:border-b bg-white w-full hover:border-slate-600 transition-all duration-300 cursor-pointer dark:bg-transparent font-bold flex  justify-center items-center gap-2">
-                            <BsGooglePlay className="text-2xl"/>
-                        </div>
-                    </div>
-            </div>
-        </div>
-
         <footer className="bg-slate-50 dark:bg-black">
             <div className="max-w-6xl mx-auto pt-20 px-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-center items-center pb-16">

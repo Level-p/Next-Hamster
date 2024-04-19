@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function AnimeCard({anime}) {
   return (
     <div className='group sm:hover:shadow-slate-300 sm:shadow-lg dark:sm:border dark:sm:border-gray-600 rounded-lg p-3 transition-shadow duration-200 roboto'>
-              <Link href={`/anime/${anime.myanimelist_id}`}>
+              <Link href={`/animelook/${anime.myanimelist_id}`}>
                 <Image
                 src={anime.picture_url || anime.myanimelist_url}
                 alt=''
