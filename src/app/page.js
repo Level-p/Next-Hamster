@@ -2,6 +2,7 @@ import Results from "@/components/Results"
 import Hero from "@/components/design/Hero";
 import Intro from "@/components/design/Intro";
 import Section from "@/components/design/showcase";
+import { Suspense } from "react";
 
 const API_KEY = process.env.MOVIE_API_KEY
 
@@ -21,7 +22,9 @@ export default async function page({ searchParams }) {
   return (
     <div>
       <Hero/>
+      <Suspense>
       <Results results={results}/>
+      </Suspense>
       <Intro/>
       <Section/>
     </div>
