@@ -1,6 +1,5 @@
 import AnimeCard from "@/components/AnimeCard";
 import AnimeSearchBox from "@/components/AnimeSearchBox";
-import { Suspense } from "react";
 
 const getAnmie = async () => {
   const anime = {
@@ -14,8 +13,8 @@ const getAnmie = async () => {
 
   const res = await fetch(anime)
   const data = await res.json()
-  // if(!res.ok) throw new Error ('Something went')
-  // return data
+  if(!res.ok) throw new Error ('Something went')
+  return data
   
 }
 
@@ -26,13 +25,11 @@ export default async function Anime() {
   <div>
     <AnimeSearchBox/>
     <div className='sm:grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-6xl mt-10 mx-auto gap-4'>
-      <Suspense>
       {
           animes.map((anime, index) => (
             <AnimeCard key={index} anime={anime}/>
           ))
     }
-    </Suspense>
     </div>
   </div>  
   )
