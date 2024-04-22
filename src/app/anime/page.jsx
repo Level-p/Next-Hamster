@@ -14,8 +14,8 @@ const getAnmie = async () => {
 
   const res = await fetch(anime)
   const data = await res.json()
-  if(!res.ok) throw new Error ('Something went')
-  return data
+  // if(!res.ok) throw new Error ('Something went')
+  // return data
   
 }
 
