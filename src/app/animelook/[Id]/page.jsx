@@ -14,9 +14,8 @@ export default async function page({params}) {
 
     const response = await fetch(url, options)
     const anime = await response.json()
-    console.log(anime);
   return (
-    <Suspense>
+    // <Suspense>
     <section className="roboto max-w-5xl mx-auto min-h-screen">
        <div className='py-10 px-4 flex flex-col md:flex-row gap-4 items-center justify-center w-full '>
         <div className="overflow-hidden h-full">
@@ -48,6 +47,6 @@ export default async function page({params}) {
             </div>
         </div>
     </section>
-    </Suspense>
+    // </Suspense>
   )
 }
