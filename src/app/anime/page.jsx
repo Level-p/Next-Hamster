@@ -1,7 +1,8 @@
 import AnimeCard from "@/components/AnimeCard";
 import AnimeSearchBox from "@/components/AnimeSearchBox";
 
-const getAnmie = async () => {
+
+export default async function Anime() {
   const anime = {
     method: 'GET',
     url: 'https://myanimelist.p.rapidapi.com/anime/top/all',
@@ -12,20 +13,14 @@ const getAnmie = async () => {
   };
 
   const res = await fetch(anime)
+  if(!res.ok) throw new Error ('Something went wrong, limit may be exhausted')
   const data = await res.json()
-  if(!res.ok) throw new Error ('Something went')
-  return data
-}
-
-
-export default async function Anime() {
-  const animes = await getAnmie()
   return (
   <div>
     <AnimeSearchBox/>
     <div className='sm:grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-6xl mt-10 mx-auto gap-4'>
       {
-          animes.map((anime, index) => (
+          data.map((anime, index) => (
             <AnimeCard key={index} anime={anime}/>
           ))
     }
