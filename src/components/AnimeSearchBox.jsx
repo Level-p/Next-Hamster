@@ -1,5 +1,5 @@
 "use client"
-import { Suspense, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 export default function AnimeSearchBox() {
@@ -12,7 +12,6 @@ export default function AnimeSearchBox() {
   }
 
   return (
-    <Suspense>
     <form id='form' className='flex justify-between px-5 max-w-6xl mx-auto border dark:border-none rounded-md mt-5' onSubmit={handleSubmit}>
       <input id='search'
       type="text" 
@@ -23,6 +22,5 @@ export default function AnimeSearchBox() {
       />
       <button className="text-amber-600 disabled:text-gray-400" disabled={search === ''}  type="submit">Search</button>
     </form>
-    </Suspense>
   )
 }
