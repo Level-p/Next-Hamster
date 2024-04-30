@@ -13,7 +13,7 @@ export default async function Anime() {
   };
 
   const res = await fetch(anime)
-  // if(!res.ok) throw new Error ('Something went wrong, limit may be exhausted')
+  if(!res.ok) throw new Error ('Something went wrong, limit may be exhausted')
   const data = await res.json()
   return (
   <div>
