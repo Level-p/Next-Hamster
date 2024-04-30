@@ -17,7 +17,7 @@ export default async function Moviepage({params}) {
       width={500}
       height={300}
       alt=''
-      style={{maxWidth:  '100%'}}
+      style={{width:  'auto'}}
       className='rounded-lg'/>
       <div className='p-2'>
         <h2 className='text-lg font-bold mb-2'>Title: {movie.title || movie.name}</h2>
