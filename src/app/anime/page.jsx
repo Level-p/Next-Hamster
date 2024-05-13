@@ -3,18 +3,21 @@ import AnimeSearchBox from "@/components/AnimeSearchBox";
 
 
 export default async function Anime() {
-  const anime = {
+  const url= 'https://anime-db.p.rapidapi.com/anime?page=1&size=30&sortOrder=asc'
+  const options = {
     method: 'GET',
-    url: 'https://myanimelist.p.rapidapi.com/anime/top/all',
+    // url: 'https://myanimelist.p.rapidapi.com/anime/top/all',
     headers: {
       'X-RapidAPI-Key': process.env.AS_API_KEY,
-      'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
+      'X-RapidAPI-Host': 'anime-db.p.rapidapi.com'
+      // 'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
     }
   };
 
-  const res = await fetch(anime)
+  const res = await fetch(url,options)
   if(!res.ok) throw new Error ('Something went wrong, limit may be exhausted')
-  const data = await res.json()
+  const list = await res.json()
+  const data = list.data
   return (
   <div>
     <AnimeSearchBox/>
