@@ -10,7 +10,7 @@ import SearchBox from '../SearchBox'
 export default function Header() {
   return (
     <div className='lg:max-w-6xl mx-auto bg-transparent space-y-4 px-1 md:px-0'>
-      <div className='flex justify-between items-center p-5 roboto  shadow'>
+      <div className='flex justify-between items-center p-5 roboto '>
         <div className='flex items-center gap-4 w-full'>
             <MenuItem title ="home" address="/" Icon={AiFillHome}/>
             <MenuItem title ="about" address="/about" Icon={BsFillInfoCircleFill}/>
