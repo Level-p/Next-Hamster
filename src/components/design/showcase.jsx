@@ -36,7 +36,7 @@ export default function showcase() {
         </div>
 
         {/* Intro 2 */}
-        <div className="max-w-6xl mx-auto flex flex-col-reverse lg:flex-row-reverse items-center justify-between space-x-0 lg:space-x-20 space-y-8 lg:space-y-0 gap-4 roboto pb-32 ">
+        <div className="max-w-6xl mx-auto flex flex-col-reverse lg:flex-row-reverse items-center justify-between space-x-0 lg:space-x-20 space-y-8 lg:space-y-0 gap-4 roboto pb-32 px-10">
             <div className="hidden lg:block  h-[450px]  w-full mt-20 md:mt-0">
                     <Image 
                     height={1200}
