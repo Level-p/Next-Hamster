@@ -21,9 +21,8 @@ export default async function page({params}) {
         <div className="overflow-hidden h-full">
         <Image 
         src={anime.image || anime.thumb}
-        width={2000}
-        height={300}
-        style={{maxWidth: 'auto',  maxHeight: '100%'}}
+        width={5000}
+        height={900}
         alt={anime.title + 'image'}
         className='rounded-lg transition-transform duration-300 hover:scale-125 h-full'/>
         </div>

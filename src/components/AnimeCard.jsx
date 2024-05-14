@@ -8,9 +8,9 @@ export default function AnimeCard({anime}) {
                 <Image
                 src={anime.image || anime.thumb || anime.picture_url}
                 alt=''
-                height={900}
-                width={1000}
-                style={{maxWidth: 'auto'}}
+                height={300}
+                width={500}
+                // style={{maxWidth: 'auto'}}
                 className='rounded-t-lg group-hover:opacity-75 transition-opacity duration-200'
                 />
                 <div className="p-3">
