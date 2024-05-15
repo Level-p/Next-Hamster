@@ -40,7 +40,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                    <div className="flex items-center justify-between py-2 border-t">
+                    <div className="flex flex-col md:flex-row items-center justify-between py-2 border-t">
                         <div className="space-y-2">
                             <h1 className="font-bold text-2xl md:text-3xl">Hamster</h1>
                             <div className="flex gap-2 items-center">
