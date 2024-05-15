@@ -10,7 +10,6 @@ export default function AnimeCard({anime}) {
                 alt=''
                 height={300}
                 width={500}
-                // style={{maxWidth: 'auto'}}
                 className='rounded-t-lg group-hover:opacity-75 transition-opacity duration-200'
                 />
                 <div className="p-3">

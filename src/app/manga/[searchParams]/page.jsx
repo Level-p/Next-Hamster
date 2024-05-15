@@ -4,7 +4,6 @@ const options = {
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Key': process.env.AS_API_KEY,
-		// 'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
     'X-RapidAPI-Host': 'anime-db.p.rapidapi.com'
 	}
 };
@@ -12,7 +11,6 @@ const options = {
 
 export default async function MangaSearch({params}) {
     const searchParams = params.searchParams
-    // const url = `https://myanimelist.p.rapidapi.com/v2/anime/search?q=${searchParams}&n=50&score=8&genre=1`;
     const url = `https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=${searchParams}=asc`;
     const response = await fetch( url, options)
     const animes = await response.json() 

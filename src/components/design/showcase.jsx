@@ -42,8 +42,7 @@ export default function showcase() {
                     height={1200}
                     width={600}
                     alt="null"
-                    className="rounded-xl h-full w-full"
-                    // src='/intro2.jpg'/>        
+                    className="rounded-xl h-full w-full"      
                     src={'https://images.unsplash.com/photo-1572188863110-46d457c9234d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bW92aWUlMjBwb3N0ZXJzfGVufDB8fDB8fHww'} />
             </div>
 

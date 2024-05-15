@@ -6,11 +6,9 @@ export default async function Anime() {
   const url= 'https://anime-db.p.rapidapi.com/anime?page=1&size=30&sortOrder=asc'
   const options = {
     method: 'GET',
-    // url: 'https://myanimelist.p.rapidapi.com/anime/top/all',
     headers: {
       'X-RapidAPI-Key': process.env.AS_API_KEY,
       'X-RapidAPI-Host': 'anime-db.p.rapidapi.com'
-      // 'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
     }
   };
 
