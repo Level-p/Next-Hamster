@@ -13,14 +13,11 @@ pipeline {
     environment {
         SONAR_PROJECT_KEY   = 'next-hamster'
         SONAR_PROJECT_NAME  = 'Next Hamster App'
-        SONAR_SOURCES       = '.' // Scan everything from root
+        SONAR_SOURCES       = './src' // only source
     }
     steps {
         withSonarQubeEnv('sonarqube') { // Must match the name in Jenkins global config
             sh '''
-                # Install dependencies (ensures node_modules is present for scanning)
-                npm ci
-
                 # Run SonarQube scan
                 sonar-scanner \
                     -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
