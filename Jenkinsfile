@@ -89,8 +89,8 @@ pipeline {
         stage('Build docker image') {
             steps {
                 sshagent(['ansible-key']) {
-                    sh 'ssh -t -t ec2-user@15.188.89.85 -o StrictHostKeyChecking=no "ansible-galaxy collection install community.docker"'
-                    sh 'ssh -t -t ec2-user@13.38.18.123 -o StrictHostKeyChecking=no "cd /etc/ansible && ansible-playbook /opt/docker/docker-image.yml"'
+                    sh 'ssh -t -t ec2-user@3.8.132.2 -o StrictHostKeyChecking=no "ansible-galaxy collection install community.docker"'
+                    sh 'ssh -t -t ec2-user@3.8.132.2 -o StrictHostKeyChecking=no "cd /etc/ansible && ansible-playbook /opt/docker/docker-image.yml"'
                 }
             }
         }
@@ -104,7 +104,7 @@ pipeline {
         stage('Deploy to stage') {
             steps {
                 sshagent(['ansible-key']) {
-                    sh "ssh -t -t ec2-user@15.188.89.85 -o StrictHostKeyChecking=no \"cd /etc/ansible && ansible-playbook /opt/docker/docker-container.yml\""
+                    sh "ssh -t -t ec2-user@3.8.132.2 -o StrictHostKeyChecking=no \"cd /etc/ansible && ansible-playbook /opt/docker/docker-container.yml\""
                 }
             }
         }
@@ -134,7 +134,7 @@ pipeline {
         stage('Deploy to Prod') {
             steps {
                 sshagent(['ansible-key']) {
-                    sh "ssh -t -t ec2-user@15.188.89.85 -o StrictHostKeyChecking=no \"cd /etc/ansible && ansible-playbook /opt/docker/docker-container.yml\""
+                    sh "ssh -t -t ec2-user@3.8.132.2 -o StrictHostKeyChecking=no \"cd /etc/ansible && ansible-playbook /opt/docker/docker-container.yml\""
                 }
             }
         }
