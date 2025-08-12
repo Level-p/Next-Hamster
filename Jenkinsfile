@@ -18,8 +18,9 @@ pipeline {
     steps {
         withSonarQubeEnv('sonarqube') { // Must match the name in Jenkins global config
             sh '''
+                npm install
                 # Run SonarQube scan
-                sonar-scanner \
+                npx sonar-scanner \
                     -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
                     -Dsonar.projectName="${SONAR_PROJECT_NAME}" \
                     -Dsonar.sources=${SONAR_SOURCES} \
