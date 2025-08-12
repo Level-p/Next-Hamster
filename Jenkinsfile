@@ -1,12 +1,5 @@
 pipeline {
     agent any
-
-    environment {
-        SONAR_PROJECT_KEY = "nextjs-app"
-        SONAR_PROJECT_NAME = "NextJS Hamster"
-        SONAR_SOURCES = "./src"
-    }
-
     stages {
         stage('Code Checkout') {
             steps {
@@ -17,19 +10,28 @@ pipeline {
         }
 
         stage('Code Analysis with SonarQube') {
-            steps {
-                withSonarQubeEnv('sonarqube') { // Name from Jenkins global config
-                    sh """
-                        sonar-scanner \
-                        -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
-                        -Dsonar.projectName='${SONAR_PROJECT_NAME}' \
-                        -Dsonar.sources=${SONAR_SOURCES} \
-                        -Dsonar.language=js \
-                        -Dsonar.sourceEncoding=UTF-8
-                    """
-                }
-            }
+    environment {
+        SONAR_PROJECT_KEY   = 'next-hamster'
+        SONAR_PROJECT_NAME  = 'Next Hamster App'
+        SONAR_SOURCES       = '.' // Scan everything from root
+    }
+    steps {
+        withSonarQubeEnv('sonarqube') { // Must match the name in Jenkins global config
+            sh '''
+                # Install dependencies (ensures node_modules is present for scanning)
+                npm ci
+
+                # Run SonarQube scan
+                sonar-scanner \
+                    -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
+                    -Dsonar.projectName="${SONAR_PROJECT_NAME}" \
+                    -Dsonar.sources=${SONAR_SOURCES} \
+                    -Dsonar.sourceEncoding=UTF-8
+            '''
         }
+    }
+}
+
 
         stage("Quality Gate") {
             steps {
