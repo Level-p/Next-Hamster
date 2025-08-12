@@ -75,7 +75,7 @@ pipeline {
 
         stage('Build Artifact') {
             steps {
-                sh 'npm install'
+                sh 'npm install --package-lock'
                 sh 'npm run build'
             }
         }
