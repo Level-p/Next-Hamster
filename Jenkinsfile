@@ -90,6 +90,12 @@ pipeline {
             steps {
                 sshagent(['ansible-key']) {
                     sh 'ssh -t -t ubuntu@3.10.151.178 -o StrictHostKeyChecking=no "ansible-galaxy collection install community.docker"'
+                    sh """
+                    mkdir -p /opt/docker/.next
+                    scp -o StrictHostKeyChecking=no -r \
+                        ec2-user@18.130.70.145:/var/lib/jenkins/workspace/Hamster/.next \
+                        /opt/docker/.next
+                    """
                     sh 'ssh -t -t ubuntu@3.10.151.178 -o StrictHostKeyChecking=no "cd /etc/ansible && ansible-playbook /opt/docker/docker-image.yml"'
                 }
             }
