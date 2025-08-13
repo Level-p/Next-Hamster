@@ -18,7 +18,6 @@ pipeline {
     steps {
         withSonarQubeEnv('sonarqube') { // Must match the name in Jenkins global config
             sh '''
-                 sh "sudo rm -rf /var/lib/jenkins/workspace/Hamster /var/lib/jenkins/workspace/Hamster@2 /var/lib/jenkins/workspace/Hamster@3 /var/lib/jenkins/workspace/Hamster@4
                 npm install
                 # Run SonarQube scan
                 npx sonar-scanner \
@@ -76,6 +75,7 @@ pipeline {
 
         stage('Build Artifact') {
             steps {
+                sh "sudo rm -rf /var/lib/jenkins/workspace/Hamster /var/lib/jenkins/workspace/Hamster@2 /var/lib/jenkins/workspace/Hamster@3 /var/lib/jenkins/workspace/Hamster@4"
                 sh 'npm install --package-lock'
                 sh 'npm run build'
             }
