@@ -14,7 +14,7 @@ pipeline {
         pollSCM('* * * * *') // Runs every minute
     }
 
-    // stages {
+    stages {
 
     //     stage('Retrieve Terraform Outputs') {
     //         steps {
