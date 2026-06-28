@@ -3,6 +3,9 @@ pipeline {
 
     environment {
         AWS_REGION = 'eu-west-2'
+        ECS_CLUSTER = credentials('ecs-cluster')
+        ECS_SERVICE = credentials('ecs-service')
+        ECR_URL = credentials('ecr')
         SLACKCHANNEL = 'varsitix'
         SLACKCREDENTIALS = credentials('slack-cred')
     }
@@ -11,22 +14,22 @@ pipeline {
         pollSCM('* * * * *') // Runs every minute
     }
 
-    stages {
+    // stages {
 
-        stage('Retrieve Terraform Outputs') {
-            steps {
-                copyArtifacts(
-                    projectName: 'terraform-pipeline',
-                    selector: lastSuccessful()
-                )
+    //     stage('Retrieve Terraform Outputs') {
+    //         steps {
+    //             copyArtifacts(
+    //                 projectName: 'terraform-pipeline',
+    //                 selector: lastSuccessful()
+    //             )
 
-                script {
-                    env.ECR_URL = readFile('ecr_url.txt').trim()
-                    env.ECS_CLUSTER = readFile('ecs_cluster.txt').trim()
-                    env.ECS_SERVICE = readFile('ecs_service.txt').trim()
-                }
-            }
-        }
+    //             script {
+    //                 env.ECR_URL = readFile('ecr_url.txt').trim()
+    //                 env.ECS_CLUSTER = readFile('ecs_cluster.txt').trim()
+    //                 env.ECS_SERVICE = readFile('ecs_service.txt').trim()
+    //             }
+    //         }
+    //     }
 
         stage('Build Docker Image') {
             steps {
@@ -59,7 +62,7 @@ pipeline {
         stage('Login to ECR') {
             steps {
                 sh '''
-                    aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin $ECR_URL
+                    aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin ${ECR_URL}
                 '''
             }
         }
