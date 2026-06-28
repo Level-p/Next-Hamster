@@ -18,9 +18,9 @@ export default async function page({params}) {
        <div className='py-10 px-4 flex flex-col md:flex-row gap-4 items-center justify-center w-full '>
         <div className="overflow-hidden h-full">
         <Image 
-        src={anime.image || anime.thumb}
-        width={5000}
-        height={900}
+        src={anime.image}
+        height={300}
+        width={2000}
         alt={anime.title + 'image'}
         className='rounded-lg transition-transform duration-300 hover:scale-125 h-full'/>
         </div>

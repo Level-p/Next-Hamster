@@ -1,0 +1,116 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_REGION = 'eu-west-2'
+        SLACKCHANNEL = 'varsitix'
+        SLACKCREDENTIALS = credentials('slack-cred')
+    }
+
+    triggers {
+        pollSCM('* * * * *') // Runs every minute
+    }
+
+    stages {
+
+        stage('Retrieve Terraform Outputs') {
+            steps {
+                copyArtifacts(
+                    projectName: 'terraform-pipeline',
+                    selector: lastSuccessful()
+                )
+
+                script {
+                    env.ECR_URL = readFile('ecr_url.txt').trim()
+                    env.ECS_CLUSTER = readFile('ecs_cluster.txt').trim()
+                    env.ECS_SERVICE = readFile('ecs_service.txt').trim()
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                dir('Next-Hamster') {
+                    sh '''
+                        docker build -t app:latest .
+                    '''
+                }
+            }
+        }
+
+        stage('Trivy Scan') {
+            steps {
+                sh '''
+                    trivy image \
+                      --format junit \
+                      --output trivy-report.xml \
+                      app:latest
+                '''
+            }
+        }
+
+        stage('Publish Scan Report') {
+            steps {
+                junit 'trivy-report.xml'
+                archiveArtifacts artifacts: 'trivy-report.xml'
+            }
+        }
+
+        stage('Login to ECR') {
+            steps {
+                sh '''
+                    aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin $ECR_URL
+                '''
+            }
+        }
+
+        stage('Tag and Push') {
+            steps {
+                sh '''
+                    docker tag app:latest ${ECR_URL}:latest
+                    docker push ${ECR_URL}:latest
+                '''
+            }
+        }
+
+        stage('Deploy to ECS') {
+            steps {
+                sh '''
+                    aws ecs update-service \
+                        --cluster ${ECS_CLUSTER} \
+                        --service ${ECS_SERVICE} \
+                        --force-new-deployment \
+                        --region ${AWS_REGION}
+                '''
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'trivy-report.xml'
+            script {
+                slackSend(
+                    channel: SLACKCHANNEL,
+                    color: currentBuild.result == 'SUCCESS' ? 'good' : 'danger',
+                    message: "Job 'ECS Deployment [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) has been completed."
+                )
+            }
+        }
+        failure {
+            slackSend(
+                channel: SLACKCHANNEL,
+                color: 'danger',
+                message: "Job 'ECS Deployment [${env.BUILD_NUMBER}]' has failed. Check console output at ${env.BUILD_URL}."
+            )
+        }
+
+        success {
+            slackSend(
+                channel: SLACKCHANNEL,
+                color: 'good',
+                message: "Job 'ECS Deployment [${env.BUILD_NUMBER}]' completed successfully. Check console output at ${env.BUILD_URL}."
+            )
+        }
+    }
+}
