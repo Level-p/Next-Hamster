@@ -1,13 +1,14 @@
 import AnimeCard from "@/components/AnimeCard";
 import AnimeSearchBox from "@/components/AnimeSearchBox";
 
+const API = process.env.AS_API_KEY
 
 export default async function Anime() {
   const url= 'https://anime-db.p.rapidapi.com/anime?page=1&size=30&sortOrder=asc'
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': process.env.AS_API_KEY,
+      'X-RapidAPI-Key': API,
       'X-RapidAPI-Host': 'anime-db.p.rapidapi.com'
     }
   };

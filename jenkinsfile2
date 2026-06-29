@@ -15,22 +15,11 @@ pipeline {
     }
 
     stages {
-
-    //     stage('Retrieve Terraform Outputs') {
-    //         steps {
-    //             copyArtifacts(
-    //                 projectName: 'terraform-pipeline',
-    //                 selector: lastSuccessful()
-    //             )
-
-    //             script {
-    //                 env.ECR_URL = readFile('ecr_url.txt').trim()
-    //                 env.ECS_CLUSTER = readFile('ecs_cluster.txt').trim()
-    //                 env.ECS_SERVICE = readFile('ecs_service.txt').trim()
-    //             }
-    //         }
-    //     }
-
+        stage ("CheckOut") {
+            steps {
+                checkout scm
+            }
+        }
         stage('Build Docker Image') {
             steps {
                     sh '''
