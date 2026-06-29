@@ -2,7 +2,7 @@ import AnimeCard from "@/components/AnimeCard";
 import AnimeSearchBox from "@/components/AnimeSearchBox";
 
 const API = process.env.AS_API_KEY
-
+export const dynamic = 'force-dynamic';
 export default async function Anime() {
   const url= 'https://anime-db.p.rapidapi.com/anime?page=1&size=30&sortOrder=asc'
   const options = {
