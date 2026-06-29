@@ -41,7 +41,7 @@ pipeline {
 
         stage('Publish Scan Report') {
             steps {
-                junit 'trivy-report.xml'
+                xml 'trivy-report.xml'
                 archiveArtifacts artifacts: 'trivy-report.xml'
             }
         }
