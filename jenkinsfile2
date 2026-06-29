@@ -32,7 +32,7 @@ pipeline {
             steps {
                 sh '''
                     trivy image \
-                      --format junit \
+                      --format table \
                       --output trivy-report.xml \
                       app:latest
                 '''
@@ -41,7 +41,6 @@ pipeline {
 
         stage('Publish Scan Report') {
             steps {
-                xml 'trivy-report.xml'
                 archiveArtifacts artifacts: 'trivy-report.xml'
             }
         }
